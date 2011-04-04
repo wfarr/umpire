@@ -32,8 +32,26 @@ class BeanCounterTest < MiniTest::Unit::TestCase
     assert_equal '1', response.body
     clear_fqdn_count
   end
-  
+
+  def test_check_existing_hitter
+    set_fqdn_count
+    get '/foo.bar.baz.com'
+    assert response.ok?
+    assert_equal '13', response.body
+    clear_fqdn_count
+  end
+
+  def test_check_nonexistent_hitter
+    get '/bang.com'
+    refute response.ok?
+    assert_equal 'dne', response.body
+  end
+
   def clear_fqdn_count
     $redis.hdel 'counts', 'foo.bar.baz.com'
+  end
+
+  def set_fqdn_count
+    $redis.hset 'counts', 'foo.bar.baz.com', 13
   end
 end

@@ -18,4 +18,17 @@ class BeanCounter < Sinatra::Base
     end
     "#{$redis.hget 'counts', fqdn}"
   end
+  
+  get '/:fqdn' do
+    fqdn = params[:fqdn]
+    if $redis.hexists 'counts', fqdn
+      "#{$redis.hget 'counts', fqdn}"
+    else
+      porkchop_sandwiches('dne')
+    end
+  end
+  
+  def porkchop_sandwiches(msg)
+    [500, msg]
+  end
 end
