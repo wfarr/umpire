@@ -5,6 +5,7 @@
   </head>
   <body>
     <h1>Umpire</h1>
+    <h2>The Count for This Game</h2>
     <% if @all.empty? %>
     <p>The count is nothing.</p>
     <% else %>
@@ -23,5 +24,10 @@
       </tbody>
     </table>
     <% end %>
+    <h2>Throw a Pitch?</h2>
+    <form action='/new' method='post'>
+      FQDN: <input type="text" name="fqdn" />
+      <input type="submit" value="Throw it!" />
+    </form>
   </body>
 </html>

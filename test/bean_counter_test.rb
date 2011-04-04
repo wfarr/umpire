@@ -37,10 +37,15 @@ class BeanCounterTest < MiniTest::Unit::TestCase
 
   def test_create_new_hitter
     clear_fqdn_count
-    post '/foo.bar.baz.com'
-    assert response.ok?
-    assert_match 'Umpire | foo.bar.baz.com', response.body
-    assert_match 'This guy\'s got 1 strikes!', response.body
+    post '/new', :fqdn => 'foo.bar.baz.com'
+    assert 302, response.status
+    clear_fqdn_count
+  end
+
+  def test_create_new_hitter_from_fqdn
+    clear_fqdn_count
+    post '/incr', :fqdn => 'foo.bar.baz.com'
+    assert 302, response.status
     clear_fqdn_count
   end
 

@@ -12,15 +12,25 @@ class BeanCounter < Sinatra::Base
     erb :index
   end
 
-  post '/:fqdn' do
+  post '/new' do
+    @fqdn = params[:fqdn]
+    if count_exists?(@fqdn)
+      porkchop_sandwiches('already on the roster')
+    else
+      new_count(@fqdn)
+    end
+    redirect to("/#{@fqdn}")
+  end
+
+  post '/incr' do
     @fqdn = params[:fqdn]
     if count_exists?(@fqdn)
       inc_count(@fqdn)
     else
-      new_count(@fqdn)
+      porkchop_sandwiches('not on the team, chief')
+      redirect to('/')
     end
-    @count = fetch_count(@fqdn)
-    erb :fqdn
+    redirect to("/#{@fqdn}")
   end
 
   get '/:fqdn' do
