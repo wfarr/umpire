@@ -49,6 +49,19 @@ class BeanCounterTest < MiniTest::Unit::TestCase
     clear_fqdn_count
   end
 
+  def test_destroy_existing_hitter
+    set_fqdn_count
+    post '/destroy', :fqdn => 'foo.bar.baz.com'
+    assert 302, response.status
+    clear_fqdn_count
+  end
+
+  def test_destroy_non_existing_hitter
+    post '/destroy', :fqdn => 'foo.bar.baz.com'
+    assert 500, response.status
+    assert_equal 'is this guy even real?', response.body
+  end
+
   def test_check_existing_hitter
     set_fqdn_count
     get '/foo.bar.baz.com'
