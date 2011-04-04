@@ -11,5 +11,10 @@
       <input type='hidden' name='fqdn' value='<%= @fqdn %>'>
       <input type="submit" value="Throw it!" />
     </form>
+    <h2>Throw <%= @fqdn %> out of the game?</h2>
+    <form action='/destroy' method='post'>
+      <input type='hidden' name='fqdn' value='<%= @fqdn %>'>
+      <input type="submit" value="He's outta here!" />
+    </form>
   </body>
 </html>
