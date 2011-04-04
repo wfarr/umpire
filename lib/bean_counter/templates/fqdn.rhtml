@@ -4,7 +4,7 @@
     <title>Umpire | <%= @fqdn %></title>
   </head>
   <body>
-    <h1><%= @fqdn%></h1>
+    <h1><a href='/'>Umpire</a> | <%= @fqdn%></h1>
     <p>This guy's got <%= @count %> strikes!</p>
     <h2>Throw <%= @fqdn %> another pitch?</h2>
     <form action='/incr' method='post'>

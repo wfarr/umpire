@@ -4,7 +4,7 @@
     <title>Umpire</title>
   </head>
   <body>
-    <h1>Umpire</h1>
+    <h1><a href='/'>Umpire</a></h1>
     <h2>The Count for This Game</h2>
     <% if @all.empty? %>
     <p>The count is nothing.</p>
@@ -17,7 +17,7 @@
         </tr>
         <% @all.each do |fqdn, count| %>
         <tr>
-          <td><%= fqdn %></td>
+          <td><a href='/<%= fqdn %>'><%= fqdn %></a></td>
           <td><%= count %></td>
         </tr>
         <% end %>
