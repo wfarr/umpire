@@ -39,7 +39,8 @@ class BeanCounterTest < MiniTest::Unit::TestCase
     clear_fqdn_count
     post '/foo.bar.baz.com'
     assert response.ok?
-    assert_equal '1', response.body
+    assert_match 'Umpire | foo.bar.baz.com', response.body
+    assert_match 'This guy\'s got 1 strikes!', response.body
     clear_fqdn_count
   end
 

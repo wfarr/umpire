@@ -13,13 +13,14 @@ class BeanCounter < Sinatra::Base
   end
 
   post '/:fqdn' do
-    fqdn = params[:fqdn]
-    if count_exists?(fqdn)
-      inc_count(fqdn)
+    @fqdn = params[:fqdn]
+    if count_exists?(@fqdn)
+      inc_count(@fqdn)
     else
-      new_count(fqdn)
+      new_count(@fqdn)
     end
-    "#{fetch_count(fqdn)}"
+    @count = fetch_count(@fqdn)
+    erb :fqdn
   end
 
   get '/:fqdn' do
