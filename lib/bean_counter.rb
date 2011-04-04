@@ -5,10 +5,13 @@ require 'sinatra'
 $redis = Redis.new
 
 class BeanCounter < Sinatra::Base
-  get '/' do
-    'Hello World!'
-  end
+  set :views, File.dirname(__FILE__) + '/bean_counter/templates'
   
+  get '/' do
+    @all = $redis.hgetall 'counts'
+    erb :index
+  end
+
   post '/:fqdn' do
     fqdn = params[:fqdn]
     if $redis.hexists 'counts', fqdn
@@ -18,7 +21,7 @@ class BeanCounter < Sinatra::Base
     end
     "#{$redis.hget 'counts', fqdn}"
   end
-  
+
   get '/:fqdn' do
     fqdn = params[:fqdn]
     if $redis.hexists 'counts', fqdn
@@ -27,7 +30,7 @@ class BeanCounter < Sinatra::Base
       porkchop_sandwiches('dne')
     end
   end
-  
+
   def porkchop_sandwiches(msg)
     [500, msg]
   end

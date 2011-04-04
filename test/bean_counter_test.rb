@@ -15,12 +15,22 @@ class BeanCounterTest < MiniTest::Unit::TestCase
     BeanCounter.new
   end
 
-  def test_hello_world
+  def test_index_with_no_fqdns
+    clear_fqdn_count
     get '/'
     assert response.ok?
-    assert_equal 'Hello World!', response.body
+    assert_match 'The count is nothing', response.body
   end
-  
+
+  def test_index_with_fqdns
+    set_fqdn_count
+    get '/'
+    assert response.ok?
+    assert_match 'foo.bar.baz.com', response.body
+    assert_match '13', response.body
+    clear_fqdn_count
+  end
+
   def test_connect_to_redis
     assert_equal $redis.ping, 'PONG'
   end

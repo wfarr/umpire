@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Umpire</title>
+  </head>
+  <body>
+    <h1>Umpire</h1>
+    <% if @all.empty? %>
+    <p>The count is nothing.</p>
+    <% else %>
+    <table>
+      <tbody>
+        <tr>
+          <td>FQDN</td>
+          <td>Count</td>
+        </tr>
+        <% @all.each do |fqdn, count| %>
+        <tr>
+          <td><%= fqdn %></td>
+          <td><%= count %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <% end %>
+  </body>
+</html>
