@@ -1,0 +1,18 @@
+# Umpire
+
+Umpire is a simple counting application using Sinatra and Redis.
+Its goal is to count "strikes" against things.
+These could be instances of errors in logs, etc.
+
+## Developing
+
+It's simple:
+
+    git clone git@github.com:wfarr/umpire.git
+    cd umpire/
+    gem install bundler
+    bundle install
+    rake # run tests
+    passenger start # run app
+
+You're done!
