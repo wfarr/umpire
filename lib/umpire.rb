@@ -1,11 +1,11 @@
-require File.join(File.dirname(__FILE__), 'bean_counter', 'init.rb')
+require File.join(File.dirname(__FILE__), 'umpire', 'init.rb')
 
 require 'sinatra'
 
 $redis = Redis.new
 
-class BeanCounter < Sinatra::Base
-  set :views, File.dirname(__FILE__) + '/bean_counter/templates'
+class Umpire < Sinatra::Base
+  set :views, File.dirname(__FILE__) + '/umpire/templates'
   
   get '/' do
     @all = all_counts

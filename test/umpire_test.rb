@@ -1,18 +1,18 @@
-require File.join(File.dirname(__FILE__), '..', 'lib', 'bean_counter.rb')
+require File.join(File.dirname(__FILE__), '..', 'lib', 'umpire.rb')
 
 require 'test/unit'
 require 'rack/test'
 
 ENV['RACK_ENV'] = 'test'
 
-class BeanCounterTest < MiniTest::Unit::TestCase
+class UmpireTest < MiniTest::Unit::TestCase
   include Rack::Test::Methods
 
   alias :response :last_response
   alias :request  :last_request
 
   def app
-    BeanCounter.new
+    Umpire.new
   end
 
   def test_index_with_no_fqdns

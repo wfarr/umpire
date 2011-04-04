@@ -1,4 +1,4 @@
-require 'lib/bean_counter.rb'
+require 'lib/umpire.rb'
 
 require 'minitest/unit'
 require 'rack'

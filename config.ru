@@ -1,3 +1,3 @@
-require 'lib/bean_counter.rb'
+require 'lib/umpire.rb'
 
-run BeanCounter
+run Umpire
