@@ -16,3 +16,11 @@ It's simple:
     passenger start # run app
 
 You're done!
+
+## API
+
+The current API looks like so:
+
+    POST /new, :fqdn # attempts to create a new player with count 1
+    POST /incr, :fqdn # attempts to incremeny player's count by 1
+    POST /destroy, :fqdn # throw the player out of the game
