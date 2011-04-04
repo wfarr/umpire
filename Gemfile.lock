@@ -1,0 +1,32 @@
+GEM
+  remote: http://rubygems.org/
+  specs:
+    daemon_controller (0.2.6)
+    fastthread (1.0.7)
+    file-tail (1.0.5)
+      spruz (>= 0.1.0)
+    minitest (2.0.2)
+    passenger (3.0.6)
+      daemon_controller (>= 0.2.5)
+      fastthread (>= 1.0.1)
+      rack
+      rake (>= 0.8.1)
+    rack (1.2.2)
+    rack-test (0.5.7)
+      rack (>= 1.0)
+    rake (0.8.7)
+    sinatra (1.2.1)
+      rack (~> 1.1)
+      tilt (< 2.0, >= 1.2.2)
+    spruz (0.2.5)
+    tilt (1.2.2)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  file-tail
+  minitest
+  passenger
+  rack-test
+  sinatra
