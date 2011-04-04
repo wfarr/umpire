@@ -24,9 +24,10 @@ class BeanCounter < Sinatra::Base
   end
 
   get '/:fqdn' do
-    fqdn = params[:fqdn]
-    if count_exists?(fqdn)
-      "#{fetch_count(fqdn)}"
+    @fqdn = params[:fqdn]
+    if count_exists?(@fqdn)
+      @count = fetch_count(@fqdn)
+      erb :fqdn
     else
       porkchop_sandwiches('dne')
     end
