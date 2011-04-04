@@ -24,4 +24,16 @@ class BeanCounterTest < MiniTest::Unit::TestCase
   def test_connect_to_redis
     assert_equal $redis.ping, 'PONG'
   end
+
+  def test_create_new_hitter
+    clear_fqdn_count
+    post '/foo.bar.baz.com'
+    assert response.ok?
+    assert_equal '1', response.body
+    clear_fqdn_count
+  end
+  
+  def clear_fqdn_count
+    $redis.hdel 'counts', 'foo.bar.baz.com'
+  end
 end
