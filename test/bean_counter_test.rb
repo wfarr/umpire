@@ -12,12 +12,16 @@ class BeanCounterTest < MiniTest::Unit::TestCase
   alias :request  :last_request
 
   def app
-    @app = BeanCounter.new
+    BeanCounter.new
   end
 
   def test_hello_world
     get '/'
     assert response.ok?
     assert_equal 'Hello World!', response.body
+  end
+  
+  def test_connect_to_redis
+    assert_equal $redis.ping, 'PONG'
   end
 end
