@@ -1,6 +1,5 @@
 module Umpire
   module Redis
-    # redis helpers
     def count_exists?(fqdn)
       $redis.hexists 'counts', fqdn
     end
