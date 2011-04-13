@@ -12,7 +12,7 @@ class UmpireTest < MiniTest::Unit::TestCase
   alias :request  :last_request
 
   def app
-    Umpire.new
+    Umpire::App.new
   end
 
   def test_index_with_no_fqdns

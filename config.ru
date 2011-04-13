@@ -1,3 +1,3 @@
 require 'lib/umpire.rb'
 
-run Umpire
+run Umpire::App
