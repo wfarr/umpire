@@ -2,7 +2,8 @@ require File.join(File.dirname(__FILE__), 'umpire', 'init.rb')
 
 require 'sinatra'
 
-$redis = Redis.new
+$r = Redis.new
+$redis = Redis::Namespace.new(:umpire, :redis => $r)
 
 class Umpire < Sinatra::Base
   set :views, File.dirname(__FILE__) + '/umpire/templates'

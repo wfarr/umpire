@@ -3,6 +3,7 @@ source :rubygems
 gem 'sinatra'
 gem 'rack-test'
 gem 'redis'
+gem 'redis-namespace'
 gem 'SystemTimer'
 gem 'hiredis'
 
